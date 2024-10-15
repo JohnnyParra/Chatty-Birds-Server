@@ -1,19 +1,21 @@
 services:
-  app:
-    image: real-time-chatt-app:latest
+  spring-rtc:
+    container_name: chatty-birds-server-spring
+    image: chatty-birds-spring:latest
     build:
       context: .
       dockerfile: Dockerfile
     ports: 
-      - '8000:8000'
+      - '8080:8080'
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
-      - postgres
+      - postgres-rtc
 
-  postgres:
+  postgres-rtc:
+    container_name: chatty-birds-server-postgres
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=${POSTGRES_DB}'
