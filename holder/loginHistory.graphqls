@@ -1,0 +1,39 @@
+extend type Query {
+  loginHistoryByUserId(userId: ID!): [LoginHistory!]!
+  loginHistoryBySessionId(sessionId: ID!): LoginHistory
+}
+
+extend type Mutation {
+  createLoginHistory(input: LoginHistoryInput!): LoginHistory!
+}
+
+type LoginHistory {
+  id: ID!
+  user: User!
+  ipAddress: String!
+  device: String!
+  location: String
+  loginTime: String!
+  logoutTime: String
+  loginMethod: String!
+  isLoginSuccessful: Boolean!
+  failureReason: String
+  userAgent: String!
+  sessionId: String!
+  failedAttemptsCount: Int!
+}
+
+input LoginHistoryInput {
+  userId: ID!
+  ipAddress: String!
+  device: String!
+  location: String
+  loginTime: String!
+  logoutTime: String
+  loginMethod: String!
+  isLoginSuccessful: Boolean!
+  failureReason: String
+  userAgent: String!
+  sessionId: String!
+  failedAttemptsCount: Int!
+}

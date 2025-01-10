@@ -1,0 +1,26 @@
+extend type Query {
+  friendsByUserId(userId: ID!): [Friend!]!
+  friendById(id: ID!): Friend
+}
+
+extend type Mutation {
+  sendFriendRequest(userId1: ID!, userId2: ID!): Friend!
+  acceptFriendRequest(id: ID!): Friend!
+  rejectFriendRequest(id: ID!): Friend!
+  updateFriendStatus(id: ID!, status: String!): Friend!
+  removeFriend(id: ID!): Friend!
+  markAsFavorite(id: ID!, isFavorite: Boolean!): Friend!
+}
+
+type Friend {
+  id: ID!
+  user_id_1: ID!
+  user_id_2: ID!
+  status: String!
+  friend_request_sent_at: String!
+  created_at: String!
+  updated_at: String!
+  is_favorite: Boolean!
+  user_1: User!
+  user_2: User!
+}

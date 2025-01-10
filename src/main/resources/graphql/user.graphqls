@@ -1,0 +1,53 @@
+extend type Query {
+  userById(id: ID!): User!
+}
+
+extend type Mutation {
+  createUser(username: String!, email: String!, password: String!): User!
+  updateSensitiveUserInfo(id: ID!, input: updateSensitiveUserInfoInput): User!
+  updateUserInfo(id: ID!, input: UpdateUserInfoInput): User!
+}
+
+input updateSensitiveUserInfoInput {
+  password: String!
+  username: String
+  email: String
+  phoneNumber: String
+  newPassword: String
+}
+
+input UpdateUserInfoInput {
+  firstName: String
+  lastName: String
+  bio: String
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  createdAt: String!
+  firstName: String
+  lastName: String
+  bio: String
+  phoneNumber: String
+  lastActiveAt: String
+  updatedAt: String
+  deletedAt: String
+  avatarMetadata: AvatarMetadata
+  rawAvatarMetadata: String
+  userPreferences: UserPreferences
+}
+
+type AvatarMetadata {
+  small: AvatarSize
+  large: AvatarSize
+  originalSize: String
+  createdAt: String
+}
+
+type AvatarSize {
+  url: String
+  size: String
+  imageType: String
+}

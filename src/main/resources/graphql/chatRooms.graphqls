@@ -1,0 +1,20 @@
+extend type Query {
+  chatRoomById(id: ID!): ChatRooms!
+  chatRoomsByUserId(userID: ID!): [ChatRooms]
+}
+
+#extend type Mutation {
+  #createChatRoom(roomName: String!, userId: ID!, isPrivate: Boolean!): ChatRooms!
+  #updateChatRoom(id: ID!, roomName: String!, isPrivate: Boolean): ChatRooms!
+  #deleteChatRoom(id: ID!): Boolean!
+#}
+
+type ChatRooms {
+  id: ID!
+  createdBy: User!
+  roomName: String!
+  createdAt: String!
+  updatedAt: String
+  deletedAt: String
+  isPrivate: Boolean
+}

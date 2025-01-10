@@ -1,0 +1,19 @@
+extend type Query {
+  notificationsByUserId(userId: ID!): [Notification!]!
+  unreadNotificationsCount(userId: ID!): Int!
+}
+
+extend type Mutation {
+  createNotification(userId: ID!, message: String!, type: String!, link: String): Notification!
+  markNotificationAsRead(id: ID!): Notification!
+}
+
+type Notification {
+  id: ID!
+  user: User!
+  message: String!
+  is_read: Boolean!
+  created_at: String!
+  type: String!
+  link: String
+}

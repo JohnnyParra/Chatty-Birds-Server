@@ -1,0 +1,21 @@
+extend type Query {
+  messagesByRoomId(roomId: ID!): [Message!]!
+  messageById(id: ID!): Message
+}
+
+extend type Mutation {
+  createMessage(roomId: ID!, messageBody: String!, sentBy: ID!): Message!
+  updateMessage(id: ID!, messageBody: String!): Message!
+  deleteMessage(id: ID!): Message!
+}
+
+type Message {
+  id: ID!
+  message_body: String!
+  sent_by: User!
+  room_id: ID!
+  is_deleted: Boolean!
+  created_at: String!
+  is_edited: Boolean!
+  replied_to_message_id: ID
+}

@@ -1,0 +1,17 @@
+extend type Query {
+  auditLogs: [AuditLog!]!
+  auditLogById(id: ID!): AuditLog
+}
+
+extend type Mutation {
+  createAuditLog(action: String!, performedBy: ID!, targetUserId: ID, details: String): AuditLog!
+}
+
+type AuditLog {
+  id: ID!
+  action: String!
+  performed_by: User!
+  target_user_id: User
+  created_at: String!
+  details: String
+}

@@ -1,0 +1,16 @@
+extend type Query {
+  blockedUsersByUserId(userId: userId!): [BlockedUsers]!
+}
+
+extend type Mutation {
+  blockUser(userId: ID!, blockedUserId: ID!): BlockedUsers!
+  unblockUser(id: ID!): BlockedUsers!
+}
+
+type BlockedUsers {
+  id: ID!
+  user: User!
+  blocked_user: User!
+  created_at: String!
+  deleted_at: String
+}

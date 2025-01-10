@@ -1,0 +1,158 @@
+extend type Query {
+  userPreferencesById(id: ID!): UserPreferences!
+}
+
+extend type Mutation {
+  updateUserPreferences(id: ID!, input: UpdateUserPreferencesInput): UserPreferences!
+}
+
+input UpdateUserPreferencesInput {
+  theme: String
+  muteAllChats: Boolean
+  languagePreference: String
+  notificationPreferences: NotificationPreferencesInput
+  twoFaLogin: Boolean
+}
+
+type UserPreferences {
+  id: ID!
+  user: User!
+  theme: String
+  muteAllChats: Boolean
+  languagePreference: String
+  notificationPreferences: NotificationPreferences
+  rawNotificationPreferences: String
+  twoFaLogin: Boolean
+}
+
+type NotificationPreferences {
+  version: String
+  notifications: Notifications
+}
+
+type Notifications {
+  messages: MessagesNotificationOptions
+  chatRooms: ChatRoomsNotificationOptions
+  userStatus: UserStatusNotificationOptions
+  appActivity: AppActivityNotificationOptions
+  friends: FriendsNotificationOptions
+  voiceChat: VoiceChatNotificationOptions
+  screenSharing: ScreenSharingNotificationOptions
+}
+
+type MessagesNotificationOptions {
+  general: NotificationOptions
+  mentions: NotificationOptions
+  unread: NotificationOptions
+  replies: NotificationOptions
+  likes: NotificationOptions
+}
+
+type ChatRoomsNotificationOptions {
+  userJoined: NotificationOptions
+  userLeft: NotificationOptions
+  roomCreated: NotificationOptions
+}
+
+type UserStatusNotificationOptions {
+  online: NotificationOptions
+}
+
+type AppActivityNotificationOptions {
+  updates: NotificationOptions
+  systemIssues: NotificationOptions
+}
+
+type FriendsNotificationOptions {
+  requests: NotificationOptions
+  responses: NotificationOptions
+  favoritedOnline: NotificationOptions
+}
+
+type VoiceChatNotificationOptions {
+  start: NotificationOptions
+  join: NotificationOptions
+  leave: NotificationOptions
+  end: NotificationOptions
+  mute: NotificationOptions
+}
+
+type ScreenSharingNotificationOptions {
+  start: NotificationOptions
+  join: NotificationOptions
+  leave: NotificationOptions
+  end: NotificationOptions
+  mute: NotificationOptions
+}
+
+type NotificationOptions {
+  enabled: Boolean
+  sound: Boolean
+}
+
+
+
+input NotificationPreferencesInput {
+  version: String
+  notifications: NotificationsInput
+}
+
+input NotificationsInput {
+  messages: MessagesNotificationOptionsInput
+  chatRooms: ChatRoomsNotificationOptionsInput
+  userStatus: UserStatusNotificationOptionsInput
+  appActivity: AppActivityNotificationOptionsInput
+  friends: FriendsNotificationOptionsInput
+  voiceChat: VoiceChatNotificationOptionsInput
+  screenSharing: ScreenSharingNotificationOptionsInput
+}
+
+input MessagesNotificationOptionsInput {
+  general: NotificationOptionsInput
+  mentions: NotificationOptionsInput
+  unread: NotificationOptionsInput
+  replies: NotificationOptionsInput
+  likes: NotificationOptionsInput
+}
+
+input ChatRoomsNotificationOptionsInput {
+  userJoined: NotificationOptionsInput
+  userLeft: NotificationOptionsInput
+  roomCreated: NotificationOptionsInput
+}
+
+input UserStatusNotificationOptionsInput {
+  online: NotificationOptionsInput
+}
+
+input AppActivityNotificationOptionsInput {
+  updates: NotificationOptionsInput
+  systemIssues: NotificationOptionsInput
+}
+
+input FriendsNotificationOptionsInput {
+  requests: NotificationOptionsInput
+  responses: NotificationOptionsInput
+  favoritedOnline: NotificationOptionsInput
+}
+
+input VoiceChatNotificationOptionsInput {
+  start: NotificationOptionsInput
+  join: NotificationOptionsInput
+  leave: NotificationOptionsInput
+  end: NotificationOptionsInput
+  mute: NotificationOptionsInput
+}
+
+input ScreenSharingNotificationOptionsInput {
+  start: NotificationOptionsInput
+  join: NotificationOptionsInput
+  leave: NotificationOptionsInput
+  end: NotificationOptionsInput
+  mute: NotificationOptionsInput
+}
+
+input NotificationOptionsInput {
+  enabled: Boolean
+  sound: Boolean
+}

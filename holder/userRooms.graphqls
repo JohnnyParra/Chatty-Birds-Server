@@ -1,0 +1,23 @@
+extend type Query {
+  userRoomsByUserId(userId: ID!): [UserRoom!]!
+  userRoomById(id: ID!): UserRoom
+}
+
+extend type Mutation {
+  joinRoom(userId: ID!, roomId: ID!): UserRoom!
+  updateUserRoom(id: ID!, isMuted: Boolean, isPinned: Boolean, lastReadMessageId: ID): UserRoom!
+  leaveRoom(id: ID!): UserRoom!
+}
+
+type UserRoom {
+  id: ID!
+  user_id: ID!
+  room_id: ID!
+  joined_at: String!
+  is_admin: Boolean!
+  last_read_message_id: ID
+  is_muted: Boolean!
+  is_pinned: Boolean!
+  room: ChatRooms!
+  user: User!
+}
