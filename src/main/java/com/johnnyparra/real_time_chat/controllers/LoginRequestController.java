@@ -2,7 +2,6 @@ package com.johnnyparra.real_time_chat.controllers;
 
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.http.ResponseCookie;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +11,7 @@ import com.johnnyparra.real_time_chat.models.LoginRequestDTO;
 import com.johnnyparra.real_time_chat.repositories.UserRepository;
 import com.johnnyparra.real_time_chat.services.JwtUtility;
 
-import jakarta.servlet.http.HttpServletResponse;
+import graphql.GraphQLContext;
 
 
 @Controller
@@ -28,18 +27,8 @@ public class LoginRequestController {
     this.JwtUtility = JwtUtility;
   }
 
-  private void setCookie(HttpServletResponse response, String name, String value, int maxAge) {
-    ResponseCookie cookie = ResponseCookie.from(name, value)
-      .httpOnly(true)
-      .secure(true)
-      .maxAge(maxAge)
-      .path("/")
-      .build();
-    response.addHeader("Set-Cookie", cookie.toString());
-  }
-
   @MutationMapping
-  public AuthenticationPayload logIn(@Argument LoginRequestDTO loginRequest, HttpServletResponse response) {
+  public AuthenticationPayload logIn(@Argument LoginRequestDTO loginRequest, GraphQLContext context) {
     User user = userRepository.findByEmail(loginRequest.getEmail());
     if (user == null) {
       throw new RuntimeException("Invalid email or password");
@@ -50,10 +39,10 @@ public class LoginRequestController {
     }
 
     String jwtToken = JwtUtility.generateJwtToken(user);
-    String refreshToken = JwtUtility.generateRefreshToken();
+    String refreshToken = JwtUtility.generateRefreshToken(user);
 
-    setCookie(response, "jwt", jwtToken, 900);
-    setCookie(response, "refreshToken", refreshToken,  604800);
+    context.put("jwt", jwtToken);
+    context.put("refreshToken", refreshToken);
 
     return new AuthenticationPayload(jwtToken, user);
   }
