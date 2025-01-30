@@ -49,7 +49,7 @@ public class ChatRooms {
   }
 
   public Long getId() {
-    return this.id;
+    return id;
   }
 
   public void setId(Long id) {
@@ -57,7 +57,7 @@ public class ChatRooms {
   }
 
   public User getUser() {
-    return this.user;
+    return user;
   }
 
   public void setUser(User user) {
@@ -65,7 +65,7 @@ public class ChatRooms {
   }
 
   public String getRoomName() {
-    return this.roomName;
+    return roomName;
   }
 
   public void setRoomName(String roomName) {
@@ -73,7 +73,7 @@ public class ChatRooms {
   }
 
   public ZonedDateTime getCreatedAt() {
-    return this.createdAt;
+    return createdAt;
   }
 
   public void setCreatedAt(ZonedDateTime createdAt) {
@@ -81,7 +81,7 @@ public class ChatRooms {
   }
 
   public ZonedDateTime getUpdatedAt() {
-    return this.updatedAt;
+    return updatedAt;
   }
 
   public void setUpdatedAt(ZonedDateTime updatedAt) {
@@ -89,7 +89,7 @@ public class ChatRooms {
   }
 
   public ZonedDateTime getDeletedAt() {
-    return this.deletedAt;
+    return deletedAt;
   }
 
   public void setDeletedAt(ZonedDateTime deletedAt) {
@@ -97,7 +97,7 @@ public class ChatRooms {
   }
 
   public Boolean getIsPrivate() {
-    return this.isPrivate;
+    return isPrivate;
   }
 
   public void setIsPrivate(Boolean isPrivate) {

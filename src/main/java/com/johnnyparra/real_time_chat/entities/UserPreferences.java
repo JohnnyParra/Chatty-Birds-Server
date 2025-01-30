@@ -58,7 +58,7 @@ public class UserPreferences {
   }
 
   public Long getId() {
-    return this.id;
+    return id;
   }
 
   public void setId(Long id) {
@@ -66,7 +66,7 @@ public class UserPreferences {
   }
 
   public User getUser() {
-    return this.user;
+    return user;
   }
 
   public void setUser(User user) {
@@ -74,7 +74,7 @@ public class UserPreferences {
   }
 
   public String getTheme() {
-    return this.theme;
+    return theme;
   }
 
   public void setTheme(String theme) {
@@ -82,7 +82,7 @@ public class UserPreferences {
   }
 
   public Boolean getMuteAllChats() {
-    return this.muteAllChats;
+    return muteAllChats;
   }
 
   public void setMuteAllChats(Boolean muteAllChats) {
@@ -90,7 +90,7 @@ public class UserPreferences {
   }
 
   public String getLanguagePreference() {
-    return this.languagePreference;
+    return languagePreference;
   }
 
   public void setLanguagePreference(String languagePreference) {
@@ -98,7 +98,7 @@ public class UserPreferences {
   }
 
   public NotificationPreferences getNotificationPreferences() {
-    return this.notificationPreferences;
+    return notificationPreferences;
   }
 
   public void setNotificationPreferences(NotificationPreferences notificationPreferences) {
@@ -106,11 +106,11 @@ public class UserPreferences {
   }
 
   public String getRawAvatarMetadata() {
-    return this.rawNotificationPreferences;
+    return rawNotificationPreferences;
   }
 
   public Boolean getTwoFaLogin() {
-    return this.twoFaLogin;
+    return twoFaLogin;
   }
 
   public void setTwoFaLogin(Boolean twoFaLogin) {

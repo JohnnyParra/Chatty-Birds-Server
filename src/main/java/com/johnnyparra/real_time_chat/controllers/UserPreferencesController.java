@@ -3,6 +3,7 @@ package com.johnnyparra.real_time_chat.controllers;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import com.johnnyparra.real_time_chat.entities.UserPreferences;
@@ -21,12 +22,14 @@ public class UserPreferencesController {
   }
 
   @QueryMapping
+  @PreAuthorize("isAuthenticated() and #id = principal.id")
   public UserPreferences userPreferencesById(@Argument Long id) {
     System.out.println("Fetching user preferences with ID: " + id);
     return userPreferencesRepository.findById(id).orElse(null);
   }
 
   @MutationMapping
+  @PreAuthorize("isAuthenticated() and #id = principal.id")
   public UserPreferences updateUserPreferences(
     @Argument Long id, 
     @Argument UpdateUserPreferencesInput input) {

@@ -3,6 +3,7 @@ package com.johnnyparra.real_time_chat.controllers;
 import java.util.List;
 
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import com.johnnyparra.real_time_chat.entities.ChatRooms;
@@ -18,12 +19,14 @@ public class ChatRoomsController {
   }
 
   @QueryMapping
+  @PreAuthorize("isAuthenticated() and #userId == principal.id")
   public List<ChatRooms> chatRoomsByUserId(Long userId) {
     System.out.println("Fetching chat rooms for user with ID: " + userId);
     return chatRoomsRepository.findByUser_Id(userId);
   }
 
   @QueryMapping
+  @PreAuthorize("isAuthenticated()")
   public ChatRooms chatRoomById(Long id) {
     System.out.println("Fetching chat room with ID: " + id);
     return chatRoomsRepository.findById(id).orElse(null);

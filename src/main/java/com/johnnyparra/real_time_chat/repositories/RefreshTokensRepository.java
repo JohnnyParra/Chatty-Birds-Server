@@ -7,7 +7,6 @@ import com.johnnyparra.real_time_chat.entities.RefreshTokens;
 
 @Repository
 public interface RefreshTokensRepository extends JpaRepository<RefreshTokens, Long> {
-  // RefreshTokens findByToken(String token);
-  // void deleteByToken(String token);
-
+  RefreshTokens findByRefreshToken(String token);
+  void deleteByRefreshToken(String token);
 }

@@ -56,11 +56,19 @@ public class RefreshTokens {
     this.user = user;
   }
 
+  public Date getExpiresAt() {
+    return expiresAt;
+  }
+
+  public void setExpiresAt(Date expiresAt) {
+    this.expiresAt = expiresAt;
+  }
+
   public String getRefreshToken() {
     return refreshToken;
   }
 
-  public void setToken(String refreshToken) {
+  public void setRefreshToken(String refreshToken) {
     this.refreshToken = refreshToken;
   }
 }

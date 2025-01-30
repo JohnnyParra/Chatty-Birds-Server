@@ -1,6 +1,7 @@
 package com.johnnyparra.real_time_chat.controllers;
 
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.ZonedDateTime;
@@ -28,12 +29,14 @@ public class UserController {
   }
 
   @QueryMapping
+  @PreAuthorize("isAuthenticated() and #id == principal.id")
   public User userById(@Argument Long id) {
     System.out.println("Fetching user with ID: " + id);
     return userRepository.findById(id).orElse(null);
   }
 
   @MutationMapping
+  @PreAuthorize("permitAll()")
   public User createUser(
     @Argument String username, 
     @Argument String email, 
@@ -51,6 +54,7 @@ public class UserController {
   }
 
   @MutationMapping  
+  @PreAuthorize("isAuthenticated() and #id == principal.id")
   public User updateUserInfo(
     @Argument Long id, 
     @Argument UpdateUserInfoInput input) {
@@ -81,6 +85,7 @@ public class UserController {
   }
 
   @MutationMapping
+  @PreAuthorize("isAuthenticated() and #id == principal.id")
   public User updateSensitiveUserInfo(
     @Argument Long id, 
     @Argument UpdateSensitiveUserInfoInput input) {

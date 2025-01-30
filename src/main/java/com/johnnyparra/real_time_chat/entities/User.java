@@ -85,11 +85,11 @@ public class User {
   }
 
   public Long getId() {
-    return this.id;
+    return id;
   }
 
   public String getFirstName() {
-    return this.firstName;
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
@@ -97,7 +97,7 @@ public class User {
   }
 
   public String getLastName() {
-    return this.lastName;
+    return lastName;
   }
 
   public void setLastName(String lastName) {
@@ -105,7 +105,7 @@ public class User {
   }
 
   public String getUsername() {
-    return this.username;
+    return username;
   }
 
   public void setUsername(String username) {
@@ -113,7 +113,7 @@ public class User {
   }
 
   public String getEmail() {
-    return this.email;
+    return email;
   }
 
   public void setEmail(String email) {
@@ -121,7 +121,7 @@ public class User {
   }
 
   public String getPassword() {
-    return this.password;
+    return password;
   }
 
   public void setPassword(String password) {
@@ -129,7 +129,7 @@ public class User {
   }
 
   public String getBio() {
-    return this.bio;
+    return bio;
   }
 
   public void setBio(String bio) {
@@ -137,7 +137,7 @@ public class User {
   }
 
   public String getPhoneNumber() {
-    return this.phoneNumber;
+    return phoneNumber;
   }
 
   public void setPhoneNumber(String phoneNumber) {
@@ -145,7 +145,7 @@ public class User {
   }
 
   public AvatarMetadata getAvatarMetadata() {
-    return this.avatarMetadata;
+    return avatarMetadata;
   }
 
   public void setAvatarMetadata(AvatarMetadata avatarMetadata) {
@@ -153,11 +153,11 @@ public class User {
   }
 
   public String getRawAvatarMetadata() {
-    return this.rawAvatarMetadata;
+    return rawAvatarMetadata;
   }
 
   public ZonedDateTime getLastActiveAt() {
-    return this.lastActiveAt;
+    return lastActiveAt;
   }
 
   public void setLastActiveAt(ZonedDateTime lastActiveAt) {
@@ -165,11 +165,11 @@ public class User {
   }
 
   public ZonedDateTime getCreatedAt() {
-    return this.createdAt;
+    return createdAt;
   }
 
   public ZonedDateTime getUpdatedAt() {
-    return this.updatedAt;
+    return updatedAt;
   }
 
   public void setUpdatedAt(ZonedDateTime updatedAt) {
@@ -177,7 +177,7 @@ public class User {
   }
 
   public ZonedDateTime getDeletedAt() {
-    return this.deletedAt;
+    return deletedAt;
   }
 
   public void setDeletedAt(ZonedDateTime deletedAt) {
@@ -185,7 +185,7 @@ public class User {
   }
 
   public List<UserPreferences> getUserPreferences() {
-    return this.userPreferences;
+    return userPreferences;
   }
 
   public void setUserPreferences(List<UserPreferences> userPreferences) {

@@ -2,6 +2,7 @@ package com.johnnyparra.real_time_chat.controllers;
 
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
@@ -28,6 +29,7 @@ public class LoginRequestController {
   }
 
   @MutationMapping
+  @PreAuthorize("permitAll()")
   public AuthenticationPayload logIn(@Argument LoginRequestDTO loginRequest, GraphQLContext context) {
     User user = userRepository.findByEmail(loginRequest.getEmail());
     if (user == null) {
